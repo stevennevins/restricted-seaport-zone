@@ -69,10 +69,6 @@ contract RestrictedZone is PausableUpgradeable, OwnableUpgradeable, ZoneInteract
      * @dev Returns the metadata for this zone.
      */
     function getSeaportMetadata() external pure returns (string memory name, Schema[] memory schemas) {
-        schemas = new Schema[](1);
-        schemas[0].id = 3003; // this would need to be the value to the restricted zone
-        schemas[0].metadata = new bytes(0);
-
         return ("RestrictedZone", schemas);
     }
 
