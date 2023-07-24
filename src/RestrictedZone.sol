@@ -9,14 +9,7 @@ import {Order, Schema, ZoneParameters} from "seaport-types/lib/ConsiderationStru
 import {OwnableUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
 import {PausableUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/security/PausableUpgradeable.sol";
 
-/**
- * @title  PausableZone
- * @author cupOJoseph, BCLeFevre, ryanio
- * @notice PausableZone is a simple zone implementation that approves every
- *         order. It can be self-destructed by its controller to pause
- *         restricted orders that have it set as their zone. Note that this zone
- *         cannot execute orders that return native tokens to the fulfiller.
- */
+/// @notice A seaport zone that restricts the fulfillment of orders to have originated through the entrypoint on the zone
 contract RestrictedZone is PausableUpgradeable, OwnableUpgradeable, ZoneInteractionErrors, ZoneInterface {
     address internal seaport;
     uint96 private mutex = 1;
